@@ -1,14 +1,3 @@
-
-export default function ExcluirProdutos() {
-
-    document.title = "Excluir Produto";
-
-  return (
-    <div>
-        <h1>Excluir Produtos</h1>
-    </div>
-  )
-}
 import  { useState, useEffect } from "react";
 import {  useParams, useNavigate } from "react-router-dom";
 import './Excluir.scss'
@@ -44,7 +33,7 @@ export default function ExcluirProdutos() {
   return (
     <div>
       <h2>Confirmação de Exclusão</h2>
-      <p className="subtitle">Deseja realmente excluir o produto: <span>{produto.nome}?</span></p>
+      <p className="subtitle">Tem certeza que deseja excluir o produto "<span>{produto.nome}"?</span></p>
       <button onClick={handleExcluir}>Confirmar Exclusão</button>
     </div>
   );

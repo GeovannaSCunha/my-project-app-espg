@@ -1,26 +1,28 @@
 h2{
     text-align: start;
-    margin: 10px;
-    color: #ff8800;
+    margin: 5px;
     font-weight: bold;
-    font-size: 55px;
+    font-size: 45px;
+    text-align: center;
 }
 .subtitle{
     font-size: 20px;
     margin: 20px;
+    text-align: center;
 }
 
 span{
-    font-weight: bol;
+    font-weight: bold;
 }
 
-button{
-    background-color: #f1860b;
+button {
     width: 190px;
     padding: 5px;
-    margin: 10px;
+    margin: 10px auto; 
+    cursor: pointer;
     border-radius: 5px;
     border: 1px solid #000;
     font-size: 16px;
     font-weight: bold;
+    display: block; /* Faz o botão ocupar a largura total do contêiner pai */
 }
