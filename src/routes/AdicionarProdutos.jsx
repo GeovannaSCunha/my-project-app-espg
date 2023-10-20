@@ -1,64 +1,96 @@
-import  { useState } from "react";
-import {  useNavigate } from "react-router-dom";
 
-import "./Adicionar.scss"
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 export default function AdicionarProduto() {
-  const [nome, setNome] = useState("");
-  const [desc, setDescricao] = useState("");
-  const [preco, setPreco] = useState("");
-  const navigate = useNavigate();
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Aqui você pode fazer a solicitação POST para adicionar o produto ao servidor
-    fetch("http://localhost:5000/produtos", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ nome, desc, preco }),
-    })
-      .then((response) => {
-        if (response.status === 201) {
-          alert("Produto adicionado")
-          navigate("/produtos");
-        } else {
-          alert("Erro ao adicionar produto")
-        }
+    //Recuperando o parâmetro ID com o HOOK useParams();
+    document.title = "EDITAR PRODUTOS";
+    const navigate = useNavigate();
+    const [novoProduto, setNovoProduto] = useState({
+        id: '', 
+        nome: '',
+        desc: '',
+        preco: ''
       });
-  };
+     
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setNovoProduto({ ...novoProduto, [name]: value });
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        fetch('http://localhost:5000/produtos', {
+          method: 'POST',
+          body: JSON.stringify(novoProduto),
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Produto adicionado com sucesso:', data);
+            navigate("/produtos");
+          })
+          .catch((error) => console.error('Erro ao adicionar o produto:', error));
 
-  return (
-    <div>
-      <h1>Adicionar Produto</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
+      };
 
-        <label htmlFor="descricao">Descrição:</label>
-        <input
-          id="descricao"
-          value={desc}
-          onChange={(e) => setDescricao(e.target.value)}
-        ></input>
 
-        <label htmlFor="preco">Preço:</label>
-        <input
-          type="text"
-          id="preco"
-          value={preco}
-          onChange={(e) => setPreco(e.target.value)}
-        />
-
-        <button type="submit">Adicionar Produto</button>
-      </form>
-    </div>
-  );
-}
+      return (
+        <div>
+          <h1>ADICIONAR PRODUTO</h1>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="id">ID</label>
+              <input
+                type="text"
+                name="id"
+                id="id"
+                placeholder="Digite o ID do produto"
+                value={novoProduto.id}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="nome">Nome</label>
+              <input
+                type="text"
+                name="nome"
+                id="nome"
+                placeholder="Digite o nome do produto"
+                value={novoProduto.nome}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="desc">Descrição</label>
+              <input
+                type="text"
+                name="desc"
+                id="desc"
+                placeholder="Digite a descrição do produto"
+                value={novoProduto.desc}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="preco">Preço</label>
+              <input
+                type="text"
+                name="preco"
+                id="preco"
+                placeholder="Digite o preço do produto"
+                value={novoProduto.preco}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <button type="submit">ADICIONAR</button>
+            </div>
+          </form>
+        </div>
+      );
+    }
