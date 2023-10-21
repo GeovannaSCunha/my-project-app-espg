@@ -1,4 +1,3 @@
-// Arquivo ModalExcluir.jsx
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import './ModalExcluir.scss';
@@ -36,8 +35,13 @@ export default function ModalExcluir(props) {
       <div className="modal-content">
         <h2>Confirmação de Exclusão</h2>
         <p className="subtitle">
-          Deseja realmente excluir o produto: "<span>{produto.nome}</span>"?
+          Deseja realmente excluir o produto: "<span className="produto">{produto.nome}</span>"?
         </p>
+        <h3>Informações do Produto:</h3>
+        <ul>
+          <li><strong>Descrição:</strong> {produto.desc}</li>
+          <li><strong>Preço:</strong> R${produto.preco}</li>
+        </ul>
         <button onClick={handleExcluir}>Confirmar Exclusão</button>
         <button onClick={props.onClose}>Cancelar</button>
       </div>

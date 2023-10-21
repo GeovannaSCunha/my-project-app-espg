@@ -85,6 +85,11 @@ export default function Produtos() {
               <td colSpan={5}>
                 PRODUTOS INFORMÁTICOS - QTD = {listaProdutosLocal.length}
               </td>
+              <td>
+              <Link to="/adicionar/produtos">
+        <button className="addProdutos">ADICIONAR PRODUTO</button>
+      </Link>
+              </td>
             </tr>
           </tfoot>
         </table>
