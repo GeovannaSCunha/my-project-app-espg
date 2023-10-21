@@ -1,6 +1,7 @@
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './AdicionarProdutos.scss';
 
 export default function AdicionarProduto() {
 
@@ -40,10 +41,10 @@ export default function AdicionarProduto() {
 
 
       return (
-        <div>
+        <div className="addProduto">
           <h1>ADICIONAR PRODUTO</h1>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="addProduto">
               <label htmlFor="id">ID</label>
               <input
                 type="text"
@@ -54,7 +55,7 @@ export default function AdicionarProduto() {
                 onChange={handleChange}
               />
             </div>
-            <div>
+            <div className="addProduto">
               <label htmlFor="nome">Nome</label>
               <input
                 type="text"
@@ -65,7 +66,7 @@ export default function AdicionarProduto() {
                 onChange={handleChange}
               />
             </div>
-            <div>
+            <div className="addProduto">
               <label htmlFor="desc">Descrição</label>
               <input
                 type="text"
@@ -76,7 +77,7 @@ export default function AdicionarProduto() {
                 onChange={handleChange}
               />
             </div>
-            <div>
+            <div className="addProduto">
               <label htmlFor="preco">Preço</label>
               <input
                 type="text"
