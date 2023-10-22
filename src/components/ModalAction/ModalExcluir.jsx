@@ -20,7 +20,7 @@ export default function ModalExcluir(props) {
     })
       .then(() => {
         alert("Produto Excluído com sucesso");
-        props.onClose();
+        props.onClose(); //Fecha o modal
         navigate("/produtos");
       })
       .catch((error) => console.log(error));
@@ -39,8 +39,8 @@ export default function ModalExcluir(props) {
         </p>
         <h3>Informações do Produto:</h3>
         <ul>
-          <li><strong>Descrição:</strong> {produto.desc}</li>
-          <li><strong>Preço:</strong> R${produto.preco}</li>
+          <li><strong>Descrição: </strong> {produto.desc}</li>
+          <li><strong>Preço: </strong> R${produto.preco}</li>
         </ul>
         <button onClick={handleExcluir}>Confirmar Exclusão</button>
         <button onClick={props.onClose}>Cancelar</button>
