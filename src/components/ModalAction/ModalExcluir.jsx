@@ -34,7 +34,7 @@ export default function ModalExcluir(props) {
   return (
     <div className="custom-modal">
       <div className="modal-content">
-        <h2>Exclusão</h2>
+        <h2>Confirmação de Exclusão</h2>
         <p className="subtitle">
           Deseja realmente excluir o produto: "<span className="produto">{produto.nome}</span>"?
         </p>
