@@ -21,9 +21,10 @@ export default function ModalAction(props) {
     fetch(`http://localhost:5000/produtos/${id}`, {
       method: "DELETE",
     })
+    //Confirmando, exibe o alerta, fecha o modal e retorna aos produtos
       .then(() => {
         alert("Produto Exluido com sucesso");
-        onClose(); // Fecha o modal
+        onClose(); //Fecha o modal
         navigate("/produtos");
       })
       .catch((error) => console.log(error));
@@ -32,7 +33,7 @@ export default function ModalAction(props) {
   if (!open || !produto) {
     return null; // Não renderizar nada se o modal não estiver aberto ou os dados do produto não estiverem prontos
   }
-
+//Formulário de exclusão
   return (
     <div className="custom-modal">
       <div className="modal-content">
