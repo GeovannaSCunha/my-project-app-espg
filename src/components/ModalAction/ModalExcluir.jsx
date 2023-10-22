@@ -29,7 +29,7 @@ export default function ModalExcluir(props) {
   if (!produto) {
     return <div>Carregando...</div>;
   }
-
+  // botão para confirmar a exclusão e outro para cancelar a operação.
   return (
     <div className="custom-modal">
       <div className="modal-content">
