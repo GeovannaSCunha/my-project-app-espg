@@ -18,7 +18,6 @@ export default function ModalExcluir(props) {
     fetch(`http://localhost:5000/produtos/${id}`, {
       method: "DELETE",
     })
-    //Após a confirmação da exclusão, exibe o alerta e fecha o modal, retornando aos produtos
       .then(() => {
         alert("Produto Excluído com sucesso");
         props.onClose(); //Fecha o modal
@@ -30,7 +29,6 @@ export default function ModalExcluir(props) {
   if (!produto) {
     return <div>Carregando...</div>;
   }
-// Criando o formulário de exclusão do produto
   return (
     <div className="custom-modal">
       <div className="modal-content">
