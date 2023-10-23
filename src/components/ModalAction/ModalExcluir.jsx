@@ -7,6 +7,7 @@ export default function ModalExcluir(props) {
   const [produto, setProduto] = useState(null);
   const navigate = useNavigate();
 
+  // UseEffect para buscar informações do produto com base no ID
   useEffect(() => {
     fetch(`http://localhost:5000/produtos/${id}`)
       .then((response) => response.json())
@@ -14,22 +15,26 @@ export default function ModalExcluir(props) {
       .catch((error) => console.log(error));
   }, [id]);
 
+  // Função para lidar com a exclusão do produto
   const handleExcluir = () => {
     fetch(`http://localhost:5000/produtos/${id}`, {
       method: "DELETE",
     })
       .then(() => {
+        // Após a exclusão bem-sucedida, exibe um alerta, fecha o modal e navega de volta para a página de produtos
         alert("Produto Excluído com sucesso");
-        props.onClose(); //Fecha o modal
-        navigate("/produtos");
+        props.onClose(); // Fecha o modal
+        navigate("/produtos"); // Navega de volta para a página de produtos
       })
       .catch((error) => console.log(error));
   };
 
+  // Se as informações do produto ainda não foram carregadas, exibe uma mensagem de carregamento
   if (!produto) {
     return <div>Carregando...</div>;
   }
-  // botão para confirmar a exclusão e outro para cancelar a operação.
+
+  // Renderização do formulário de confirmação de exclusão
   return (
     <div className="custom-modal">
       <div className="modal-content">
@@ -42,6 +47,7 @@ export default function ModalExcluir(props) {
           <li><strong>Descrição: </strong> {produto.desc}</li>
           <li><strong>Preço: </strong> R${produto.preco}</li>
         </ul>
+        {/* Botão para confirmar a exclusão e outro para cancelar a operação */}
         <button onClick={handleExcluir}>Confirmar Exclusão</button>
         <button onClick={props.onClose}>Cancelar</button>
       </div>
