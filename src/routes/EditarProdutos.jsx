@@ -6,11 +6,11 @@ export default function EditarProdutos() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Define an initial state for the product
+  // Define um estado inicial para o número
   const initialProductState = {
     nome: '',
     desc: '',
-    preco: 0, // Assuming it's a number
+    preco: 0, // Assume que é um número
   };
 
   const [produto, setProduto] = useState(initialProductState);

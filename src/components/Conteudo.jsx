@@ -5,7 +5,7 @@ export default function Conteudo() {
     <>
       {/* Área imperativa */}
       <section>
-        {/* This is a comment */}
+        {/* Comentário */}
         <p>
           <a href="/">Home Page</a>
         </p>

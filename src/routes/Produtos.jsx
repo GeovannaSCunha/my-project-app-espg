@@ -87,7 +87,8 @@ export default function Produtos() {
               </td>
               <td>
               <Link to="/adicionar/produtos">
-        <button className="addProdutos">ADICIONAR PRODUTO</button>
+        <button className="addProdutos">ADICIONAR PRODUTO</button> 
+        {/* adiciona produto */}
       </Link>
               </td>
             </tr>

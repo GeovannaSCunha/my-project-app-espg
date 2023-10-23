@@ -11,12 +11,11 @@ export default function AdicionarProduto() {
 
   // Cria um estado para armazenar informações sobre o novo produto
   const [novoProduto, setNovoProduto] = useState({
-    id: '', 
-    nome: '',
-    desc: '',
-    preco: ''
+    nome: '', // Estado inicial vazio para o nome do produto
+    desc: '', // Estado inicial vazio para a descrição do produto
+    preco: '' // Estado inicial vazio para o preço do produto
   });
- 
+
   // Função chamada quando um campo do formulário é alterado
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,10 +27,13 @@ export default function AdicionarProduto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Remove o campo "id" dos dados do novo produto
+    const { id, ...dadosProduto } = novoProduto;
+
     // Envia uma requisição POST para adicionar o novo produto
     fetch('http://localhost:5000/produtos', {
       method: 'POST',
-      body: JSON.stringify(novoProduto),
+      body: JSON.stringify(dadosProduto), // Envia os dados do produto sem o campo "id"
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -51,17 +53,6 @@ export default function AdicionarProduto() {
       <h1>ADICIONAR PRODUTO</h1>
       <form onSubmit={handleSubmit}>
         {/* Campos do formulário */}
-        <div className="addProduto">
-          <label htmlFor="id">ID</label>
-          <input
-            type="text"
-            name="id"
-            id="id"
-            placeholder="Digite o ID do produto"
-            value={novoProduto.id}
-            onChange={handleChange}
-          />
-        </div>
         <div className="addProduto">
           <label htmlFor="nome">Nome</label>
           <input
